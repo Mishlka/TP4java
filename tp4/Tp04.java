@@ -139,9 +139,6 @@ public class Tp04 {
 		int nombreCases = 9; // Nombre de cases à remplir par partie, maximum 20
 
 		Scanner cl = new Scanner(System.in);
-		System.out.println("Salut");
-		System.out.println("MON MESSAGE");
-		System.out.println("yoooo");
 		// Déclarer un tableau pour les points et l'initialiser avec les points
 		// de base inscrits sur la feuille de pointage disponible dans l'énoncé
 		// Déclarer un tableau de tuiles et l'initialiser en appelant genereTableauTuiles()
