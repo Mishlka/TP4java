@@ -140,6 +140,7 @@ public class Tp04 {
 
 		Scanner cl = new Scanner(System.in);
 		System.out.println("Salut");
+		System.out.println("MON MESSAGE");
 		// Déclarer un tableau pour les points et l'initialiser avec les points
 		// de base inscrits sur la feuille de pointage disponible dans l'énoncé
 		// Déclarer un tableau de tuiles et l'initialiser en appelant genereTableauTuiles()
@@ -167,7 +168,7 @@ public class Tp04 {
 	// A FAIRE (9) : code - documentation(/**)
 	public static void ajusteTableauPoints(int[] points, boolean base) {
 		// Aucun affichage n'est réalisé par cette procédure
-		// On modifie seulement les trois cases du tableau des points qui varient 
+		// On modifie seulement les trois cases du tableau des points qui varient
 		// selon le type de pointage choisi (voir énoncé).
 	}
 
