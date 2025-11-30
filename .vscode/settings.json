@@ -29,5 +29,6 @@
     "git.optimisticUpdate": false,
     "git.showPushSuccessNotification": true,
     "git.terminalGitEditor": true,
-    "git.confirmSync": false
+    "git.confirmSync": false,
+    "java.debug.settings.onBuildFailureProceed": true
 }

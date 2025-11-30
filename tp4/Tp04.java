@@ -8,46 +8,46 @@ import commun.Outils;
 public class Tp04 {
 	@Test void test11() {
 		int[] pointsO = new int[] {  0,  1,  3,  5,  7,  9, 11, 15, 20, 25,
-								   30, 35, 40, 50, 60, 70, 85,100,150,300};
+								30, 35, 40, 50, 60, 70, 85,100,150,300};
 		int[] pointsA = new int[] {  0,  1,  3,  5,  7,  3, 11, 15, 20, 25,
-								   30, 20, 40, 50, 60, 70, 50,100,150,300};
+								30, 20, 40, 50, 60, 70, 50,100,150,300};
 		ajusteTableauPoints(pointsO, false);
 		assertArrayEquals(pointsA, pointsO);
 	}
 	@Test void test12() {
 		int[] pointsO = new int[] {  0,  1,  3,  5,  7,  9, 11, 15, 20, 25,
-								   30, 35, 40, 50, 60, 70, 85,100,150,300};
+								30, 35, 40, 50, 60, 70, 85,100,150,300};
 		int[] pointsA = new int[] {  0,  1,  3,  5,  7,  9, 11, 15, 20, 25,
-								   30, 35, 40, 50, 60, 70, 85,100,150,300};
+								30, 35, 40, 50, 60, 70, 85,100,150,300};
 		ajusteTableauPoints(pointsO, true);
 		assertArrayEquals(pointsA, pointsO);
 	}
 	@Test void test13() {
 		int[] pointsO = new int[] {  0,  1,  3,  5,  7,  3, 11, 15, 20, 25,
-								   30, 20, 40, 50, 60, 70, 50,100,150,300};
+								30, 20, 40, 50, 60, 70, 50,100,150,300};
 		int[] pointsA = new int[] {  0,  1,  3,  5,  7,  3, 11, 15, 20, 25,
-								   30, 20, 40, 50, 60, 70, 50,100,150,300};
+								30, 20, 40, 50, 60, 70, 50,100,150,300};
 		ajusteTableauPoints(pointsO, false);
 		assertArrayEquals(pointsA, pointsO);
 	}
 	@Test void test14() {
 		int[] pointsO = new int[] {  0,  1,  3,  5,  7,  3, 11, 15, 20, 25,
-								   30, 20, 40, 50, 60, 70, 50,100,150,300};
+								30, 20, 40, 50, 60, 70, 50,100,150,300};
 		int[] pointsA = new int[] {  0,  1,  3,  5,  7,  9, 11, 15, 20, 25,
-								   30, 35, 40, 50, 60, 70, 85,100,150,300};
+								30, 35, 40, 50, 60, 70, 85,100,150,300};
 		ajusteTableauPoints(pointsO, true);
 		assertArrayEquals(pointsA, pointsO);
 	}
 
 	@Test void test21() {
 		assertArrayEquals(new int[] {
-			 0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+			0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
 			20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 11, 12, 13, 14, 15, 16, 17, 18, 19}, 
 			genereTableauTuiles(true));
 	}
 	@Test void test22() {
 		assertArrayEquals(new int[] {
-			 1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+			1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
 			21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40}, 
 			genereTableauTuiles(false));
 	}
@@ -136,17 +136,36 @@ public class Tp04 {
 	public static void main(String[] args) {
 		// A FAIRE (60) : code
 //		Outils.Aleatoire.setSeed(9531);
-		int nombreCases = 9; // Nombre de cases à remplir par partie, maximum 20
 
 		Scanner cl = new Scanner(System.in);
+		int nombreCases = 9; // Nombre de cases à remplir par partie, maximum 20          (!!! A CHANGER JE PENSE Michel)
+
+		char typePointage;
+		char typeTuile;
 		// Déclarer un tableau pour les points et l'initialiser avec les points
 		// de base inscrits sur la feuille de pointage disponible dans l'énoncé
 		// Déclarer un tableau de tuiles et l'initialiser en appelant genereTableauTuiles()
+
 		// Déclarer et initialiser un tableau de taille nombreCases pour les cases
 		// Déclarer un tableau pour les scores, sans l'initialiser (sans faire de new)
 		// Déclarer d'autres variables, si nécessaire
 		// Répéter
 			// Afficher le menu et lire le choix de l'usager
+			System.out.print("Pointages de (B)ase ou (E)xpert. Pointages actuels : ");
+			typePointage = cl.next().charAt(0);
+
+			// A FAIRE POINTAGE BASE OU EXPERT
+
+			System.out.print("Tuiles (C)lassiques ou (D)ifférentes. Tuiles actuelles : ");
+			typeTuile = Character.toUpperCase(cl.next().charAt(0));
+			while (typeTuile != 'C' && typeTuile != 'D') {
+				System.out.println("Cette sorte de tuile n'existe pas. Choisissez soit C ou D : ");
+				typeTuile = Character.toUpperCase(cl.next().charAt(0));
+			}
+			int[] tableauTuiles = genereTableauTuiles(true, typeTuile);
+			for (int i = 0; i < tableauTuiles.length; ++i) {
+				System.out.print(tableauTuiles[i] + " ");
+			}
 			// Selon son choix
 				// B ou E : appeler ajusteTableauPoints()
 				// C ou D : appeler genereTableauTuiles()
@@ -164,20 +183,28 @@ public class Tp04 {
 	}
 
 	// A FAIRE (9) : code - documentation(/**)
-	public static void ajusteTableauPoints(int[] points, boolean base) {
+	public static void ajusteTableauPoints(int[] points, boolean base, char typePointage) {
 		// Aucun affichage n'est réalisé par cette procédure
 		// On modifie seulement les trois cases du tableau des points qui varient
 		// selon le type de pointage choisi (voir énoncé).
 	}
 
 	// A FAIRE (15) : code - documentation(/**)
-	public static int[] genereTableauTuiles(boolean classique) {
+	public static int[] genereTableauTuiles(boolean classique, char typeTuile) {
 		// Aucun affichage n'est réalisé par cette fonction
 		// Créer un tableau de taille quarante pour enregistrer les tuiles
+		int [] tableauTuiles;
+		tableauTuiles = new int[40];
 		// On initialise le tableau des tuiles selon la distribution désirée
 		// Classique : 0, 1 ... 29, 30, 11, 12 ... 18, 19
+			if (typeTuile == 'C') {
+				tableauTuiles = new int[] {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 11, 12, 13, 14, 15, 16, 17, 18, 19, 0};
+				}
 		// Différent : 1, 2 ... 39, 40
-		return new int[0]; // Retourne un tableau de tuiles
+			if (typeTuile == 'D') {
+				tableauTuiles = new int[] {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40};
+				}
+		return tableauTuiles; // Retourne un tableau de tuiles
 	}
 
 	// A FAIRE (4) : code - documentation(/**)
