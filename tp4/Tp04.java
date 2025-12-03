@@ -6,6 +6,8 @@ import java.util.Scanner;
 import commun.Outils;
 
 public class Tp04 {
+
+	// FAUT T'IL METTRE SCANNER POUR BOOLEAN ?? - PAS SUPPRIMER
 	@Test void test11() {
 		int[] pointsO = new int[] {  0,  1,  3,  5,  7,  9, 11, 15, 20, 25,
 								30, 35, 40, 50, 60, 70, 85,100,150,300};
@@ -152,20 +154,13 @@ public class Tp04 {
 		// Répéter
 			// Afficher le menu et lire le choix de l'usager
 			System.out.print("Pointages de (B)ase ou (E)xpert. Pointages actuels : ");
-			typePointage = cl.next().charAt(0);
 
-			// A FAIRE POINTAGE BASE OU EXPERT
+			//AFFICHAGE ?
 
 			System.out.print("Tuiles (C)lassiques ou (D)ifférentes. Tuiles actuelles : ");
-			typeTuile = Character.toUpperCase(cl.next().charAt(0));
-			while (typeTuile != 'C' && typeTuile != 'D') {
-				System.out.println("Cette sorte de tuile n'existe pas. Choisissez soit C ou D : ");
-				typeTuile = Character.toUpperCase(cl.next().charAt(0));
-			}
-			int[] tableauTuiles = genereTableauTuiles(true, typeTuile);
-			for (int i = 0; i < tableauTuiles.length; ++i) {
-				System.out.print(tableauTuiles[i] + " ");
-			}
+
+			//AFFICHAGE ?
+
 			// Selon son choix
 				// B ou E : appeler ajusteTableauPoints()
 				// C ou D : appeler genereTableauTuiles()
@@ -183,11 +178,35 @@ public class Tp04 {
 	}
 
 	// A FAIRE (9) : code - documentation(/**)
-	public static void ajusteTableauPoints(int[] points, boolean base, char typePointage) {
+	public static int[] ajusteTableauPoints(int[] points, boolean base) {
+
 		// Aucun affichage n'est réalisé par cette procédure
 		// On modifie seulement les trois cases du tableau des points qui varient
 		// selon le type de pointage choisi (voir énoncé).
+
+		int [] tableauPointage;
+		tableauPointage = new int[20];
+
+		int pos5 = 5;
+		int pos11 = 11;
+		int pos16 = 16;
+
+		if (base == true ) {
+
+			points[pos5] = 9;
+			points[pos11] = 35;
+			points[pos16] = 85;
+		} else {
+
+			points[pos5] = 3;
+			points[pos11] = 20;
+			points[pos16] = 50;
+		}
+
+		return points;
+				
 	}
+
 
 	// A FAIRE (15) : code - documentation(/**)
 	public static int[] genereTableauTuiles(boolean classique, char typeTuile) {
@@ -197,13 +216,13 @@ public class Tp04 {
 		tableauTuiles = new int[40];
 		// On initialise le tableau des tuiles selon la distribution désirée
 		// Classique : 0, 1 ... 29, 30, 11, 12 ... 18, 19
-			if (typeTuile == 'C') {
+			if (classique == true) {
 				tableauTuiles = new int[] {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 11, 12, 13, 14, 15, 16, 17, 18, 19, 0};
-				}
+			}
 		// Différent : 1, 2 ... 39, 40
-			if (typeTuile == 'D') {
+			if (classique == false) {
 				tableauTuiles = new int[] {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40};
-				}
+			}
 		return tableauTuiles; // Retourne un tableau de tuiles
 	}
 
